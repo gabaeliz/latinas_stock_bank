@@ -5,15 +5,16 @@ const { Sequelize } = require("sequelize");
 
 const db = new Sequelize(DB.NAME, DB.USER, DB.PASSWORD, {
   host: DB.HOST,
-  dialect: "postgres",
-  dialectOptions:
+  DIALECT: "postgres",
+  DIALECTOptions:
     DB.ENV === "development"
       ? {}
       : {
           ssl: {
-            //require: true,
+            require: true,
             rejectUnauthorized: false,
           },
         },
 });
+
 module.exports = { db };
